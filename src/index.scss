@@ -6,6 +6,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  .app-container {
+    width: 100%;
+    box-sizing: border-box;
+
+    .title-bar-container {
+      width: 100%;
+      height: 50px;
+
+      .title-logo {
+        background: url('./app/images/bookshelf-logo.png') no-repeat;
+      }
+
+      .title-label {
+        font-size: 25px;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 code {
