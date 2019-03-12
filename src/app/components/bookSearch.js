@@ -20,7 +20,7 @@ class BookSearch extends React.Component {
                     <button
                         className="search-btn"
                         onClick={
-                            () => getBooks(this.input)
+                            () => getBooks(this.input, false)
                         }>Search</button>
                 </div>
                 <div

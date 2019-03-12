@@ -1,9 +1,14 @@
 import React from 'react';
 
 const ratingsLayout = (props) => {
-    const ratings = props.average_rating[0].hasOwnProperty("$") ?
-        props.average_rating[0]._ :
-        props.average_rating[0];
+    let ratings;
+    if(props.isDetail) {
+        ratings = props.book.ratings;
+    } else {
+        ratings = props.book.average_rating[0].hasOwnProperty("$") ?
+            props.book.average_rating[0]._ :
+            props.book.average_rating[0];
+    }
     return (
         <React.Fragment>
             <div className="star-ratings-css">

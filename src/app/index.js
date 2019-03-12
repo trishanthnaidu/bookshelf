@@ -2,6 +2,7 @@ import React from 'react';
 import SearchContainer from './components/searchContainer';
 import BookShowcase from './components/bookShowcase';
 import TitleBar from './components/titleBar';
+import BookDetails from './components/bookDetails';
 
 class BookshelfApp extends React.Component {
     render() {
@@ -10,6 +11,7 @@ class BookshelfApp extends React.Component {
                 <TitleBar />
                 <SearchContainer />
                 <BookShowcase />
+                <BookDetails />
             </div>
         );
     }

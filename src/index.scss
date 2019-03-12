@@ -110,50 +110,91 @@ body {
             background-color: #eee;
             transition: background-color 0.1s ease-in-out;
             cursor: pointer;
-            .book-template {
-                background-color: #fff;
-                height: 175px;
-                width: 48%;
-                border-radius: 5px;
-                box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-                box-sizing: border-box;
-                display: inline-flex;
-                margin: 10px;
-                padding: 15px 20px;
-                .book-img {
-                    display: inline-block;
-                }
-                .book-details {
-                    width: 75%;
-                    margin: 0px 15px;
-                    box-sizing: border-box;
-                    display: inline-block;
-                    vertical-align: top;
-                    .book-title {
-                        font-size: 35px;
-                        font-weight: bold;
-                        width: 450px;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        color: #222;
-                    }
-                    .book-author {
-                        font-size: 25px;
-                        margin: 15px 0;
-                        color: #888;
-                    }
-                    .book-ratings {
-                        display: inline-block;
-                        line-height: 33px;
-                        margin-left: 20px;
-                        font-weight: bold;
-                        font-size: 20px;
-                    }
-                }
-            }
             .book-template:hover {
                 background-color: #ffe8b8
+            }
+        }
+        .book-details-template {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9;
+            top: 0;
+            left: 0;
+            .book-details-container {
+                width: 70%;
+                height: 500px;
+                background-color: #fff;
+                position: fixed;
+                left: 15%;
+                top: 22%;
+                padding: 30px 30px;
+                box-sizing: border-box;
+            }
+        }
+        .book-template {
+            background-color: #fff;
+            height: 175px;
+            width: 48%;
+            border-radius: 5px;
+            box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+            display: inline-flex;
+            margin: 10px;
+            padding: 15px 20px;
+        }
+        .book-img {
+            display: inline-block;
+        }
+        .img-large {
+            width: 122px;
+            margin-bottom: 15%;
+        }
+        .book-details {
+            width: 75%;
+            margin: 0px 15px;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: top;
+            .book-title,
+            .book-title-sub {
+                font-size: 35px;
+                font-weight: bold;
+                width: auto;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                color: #222;
+            }
+            .book-title-sub {
+                font-size: 25px;
+                color: #666;
+            }
+            .book-author {
+                font-size: 25px;
+                margin: 15px 0;
+                color: #888;
+            }
+            .book-ratings {
+                display: inline-block;
+                line-height: 33px;
+                margin-left: 20px;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            .book-description-text {
+                font-size: 20px;
+                font-weight: bold;
+                margin: 25px 0px 0px;
+            }
+            .book-description {
+                display: inline-block;
+                width: 100%;
+                font-size: 20px;
+                box-sizing: border-box;
+                height: 235px;
+                overflow-y: auto;
             }
         }
     }
@@ -200,6 +241,40 @@ body {
             bottom: 0;
             opacity: 1
         }
+    }
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        width: 32px;
+        height: 32px;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .close:hover {
+        opacity: 1;
+    }
+    .close:before,
+    .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #333;
+    }
+    .close:before {
+        transform: rotate(45deg);
+    }
+    .close:after {
+        transform: rotate(-45deg);
+    }
+    .visible {
+        display: block;
+    }
+    .hide {
+        display: none;
     }
 }
 
