@@ -6,3 +6,7 @@ export {
 export {
     toggleDetailsPopup
 } from './toggleDetailsPopup.js';
+
+export {
+    getAuthorDetails
+} from './authorDetails.js'

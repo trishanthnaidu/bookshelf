@@ -3,6 +3,7 @@ import { appState } from 'rootz';
 import { subscribe } from 'react-rootz';
 import { toggleDetailsPopup } from '../actions';
 import { ratingsLayout as Ratings } from './ratings';
+import { getAuthorDetails } from '../actions'; 
 
 class BookDetails extends React.Component {
     constructor(props) {
@@ -12,14 +13,15 @@ class BookDetails extends React.Component {
             scope: this,
             state: {
                 book: {
-                    authors: "",
+                    authors: [],
                     title: { 
                         main: "", 
                         sub: ""
                     },
                     img: "",
                     ratings: "",
-                    description: ""
+                    description: "",
+                    authorID: []
                 },
                 isVisible: false
             }
@@ -27,6 +29,9 @@ class BookDetails extends React.Component {
     }
     render() {
         const rtx = appState.get("$BookDetails");
+        const authorDom = rtx.book.authorID.map((a, itr) => (
+            <div className="book-author" onClick={() => getAuthorDetails(a)}>{rtx.book.authors[itr]}</div>
+        ))
         return(
             <div className={`book-details-template animate ${rtx.isVisible ? "visible" : "hide"}`}>
                 <div className="book-details-container">
@@ -35,7 +40,7 @@ class BookDetails extends React.Component {
                     <div className="book-details">
                         <div className="book-title">{rtx.book.title.main}</div>
                         <div className="book-title-sub">{rtx.book.title.sub}</div>
-                        <div className="book-author">{rtx.book.authors}</div>
+                        {authorDom}
                         {rtx.book.ratings && 
                             <Ratings {...{book: rtx.book, isDetail: true}}/>
                         }

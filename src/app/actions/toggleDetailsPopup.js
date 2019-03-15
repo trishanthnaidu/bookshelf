@@ -8,15 +8,16 @@ const toggleDetailsPopup = (flag, book) => {
         appState.set("$BookDetails", { 
             isVisible: true, 
             book: {
-                authors: "",
-                title: { 
-                    main: "", 
-                    sub: ""
-                },
-                img: "",
-                ratings: "",
-                description: ""
-            } 
+                    authors: [],
+                    title: { 
+                        main: "", 
+                        sub: ""
+                    },
+                    img: "",
+                    ratings: "",
+                    description: "",
+                    authorID: []
+                }
         });
         getBooks(book, true);
     } else {

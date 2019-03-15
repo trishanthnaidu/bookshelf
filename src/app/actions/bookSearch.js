@@ -42,9 +42,12 @@ const getBooks = (query, isDetail) => {
                 parseString(
                     resp.data,
                     (err, result) => {
-                        let authors = "";
+                        let authors = [];
+                        let authorID = [];
                         result.GoodreadsResponse.book[0].authors.forEach(author => {
-                            authors === "" ? authors = author.author[0].name[0] : authors += ", " + author.author[0].name[0]
+                            // authors === "" ? authors = author.author[0].name[0] : authors += ", " + author.author[0].name[0];
+                            authorID.push(author.author[0].id[0]);
+                            authors.push(author.author[0].name[0]);
                         });
                         const book = {
                             authors,
@@ -56,7 +59,8 @@ const getBooks = (query, isDetail) => {
                             },
                             img: result.GoodreadsResponse.book[0].image_url[0],
                             ratings: result.GoodreadsResponse.book[0].average_rating[0],
-                            description: result.GoodreadsResponse.book[0].description[0].replace(/\<br \/>/g, "\n").replace(/<b>/g, "").replace(/<\/br>/g, "").replace(/<\/b>/g, "")
+                            description: result.GoodreadsResponse.book[0].description[0].replace(/\<br \/>/g, "\n").replace(/<b>/g, "").replace(/<\/br>/g, "").replace(/<\/b>/g, ""),
+                            authorID
                         }
                         appState.set(`books.${query.best_book[0].id[0]._}`, book);
                         appState.set("$BookDetails", { book });
